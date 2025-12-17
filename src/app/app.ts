@@ -1,10 +1,13 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal,input } from '@angular/core';
+import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import gsap from 'gsap';
 @Component({
   selector: 'app-arrayfn',
-  templateUrl: './arrayfn.html'
+  templateUrl: './arrayfn.html',
+  imports: [RouterOutlet]
 })
 export class Arrayfn {
+
   nums = [0, 15, 20, 25, 30];
   users = [
     {name:'A',age:15},
@@ -13,6 +16,9 @@ export class Arrayfn {
     {name:'D',age:32}
   ]
  fruits = ['apple', 'banana', 'guava','orange'];
+
+ occupation = input<string>();
+
 
  FruitsReduce(){
   let  fruitsObject = this.fruits.reduce((acc,fruit,i)=>{
@@ -105,7 +111,7 @@ export class User {
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [User, Arrayfn]
+  imports: [User, Arrayfn, ]
 })
 export class App {
   name = 'Anshuman';
