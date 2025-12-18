@@ -111,8 +111,18 @@ export class User {
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [User, Arrayfn, ]
+  imports: [User, Arrayfn, RouterOutlet]
 })
 export class App {
   name = 'Anshuman';
+}
+
+@Component({
+  selector: 'app-user2',
+  templateUrl: './user.html' ,
+    standalone: true
+})
+export class User2 {
+    username = 'youngTech';
+  favoriteFramework = '';
 }
