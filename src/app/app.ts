@@ -1,4 +1,4 @@
-import { Component, signal,input } from '@angular/core';
+import { Component, signal, input } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import gsap from 'gsap';
 @Component({
@@ -10,52 +10,54 @@ export class Arrayfn {
 
   nums = [0, 15, 20, 25, 30];
   users = [
-    {name:'A',age:15},
-    {name:'B',age:25},
-    {name:'C',age:5},
-    {name:'D',age:32}
+    { name: 'A', age: 15 },
+    { name: 'B', age: 25 },
+    { name: 'C', age: 5 },
+    { name: 'D', age: 32 }
   ]
- fruits = ['apple', 'banana', 'guava','orange'];
+  fruits = ['apple', 'banana', 'guava', 'orange'];
 
- occupation = input<string>();
+  occupation = input<string>();
 
 
- FruitsReduce(){
-  let  fruitsObject = this.fruits.reduce((acc,fruit,i)=>{
-    acc[fruit] = i
-   return acc
-}, {} as Record<string, number>);
-console.log(fruitsObject);
-console.log(this.fruits,"this is the original fruits")
- }
-  SumOfNumbers(){
-    let sum = this.nums.reduce((prev,next)=>{
-      console.log("prev",prev,"next",next);
-      return (next +prev)
+
+
+  FruitsReduce() {
+    let fruitsObject = this.fruits.reduce((acc, fruit, i) => {
+      acc[fruit] = i
+      return acc
+    }, {} as Record<string, number>);
+    console.log(fruitsObject);
+    console.log(this.fruits, "this is the original fruits")
+  }
+  SumOfNumbers() {
+    let sum = this.nums.reduce((prev, next) => {
+      console.log("prev", prev, "next", next);
+      return (next + prev)
     })
-    console.log("Sum of numbers ",sum)
+    console.log("Sum of numbers ", sum)
 
 
-    
+
   }
 
-  findUser(){
-    console.log("Finding User the user",this.users)
-    let found = this.users.find((user)=>user.age>18)
+  findUser() {
+    console.log("Finding User the user", this.users)
+    let found = this.users.find((user) => user.age > 18)
     let found2 = this.users.find(isA)
 
-    function isA (user:{name:string,age:number}){
+    function isA(user: { name: string, age: number }) {
       return user.name === 'A'
     }
-    console.log("if the user is found1",found)
-    console.log("if the user is found2",found2)
+    console.log("if the user is found1", found)
+    console.log("if the user is found2", found2)
   }
 
   findevennumber() {
     console.log("find even num called")
     this.nums = this.nums.filter((num) => {
       console.log('checking', num);
-      if(num === 0) console.log("THe number is neither odd nor even")
+      if (num === 0) console.log("THe number is neither odd nor even")
       return num % 2 === 0;
 
     })
@@ -119,10 +121,26 @@ export class App {
 
 @Component({
   selector: 'app-user2',
-  templateUrl: './user.html' ,
-    standalone: true
+  templateUrl: './user.html',
+  standalone: true
 })
 export class User2 {
-    username = 'youngTech';
+  username = 'youngTech';
   favoriteFramework = '';
+  TypeSafety() {
+    let obj: any = { x: 0 };
+    // None of the following lines of code will throw compiler errors.
+    // Using `any` disables all further type checking, and it is assumed
+    // you know the environment better than TypeScript.
+    obj();
+    obj.bar = 100;
+    obj = "hello";
+    const n: number = obj;
+    console.log(obj(), "obj()")
+    console.log(obj.bar, "obj.bar")
+  }
+  Heelo() {
+    console.log("heelo")
+  }
+  
 }
