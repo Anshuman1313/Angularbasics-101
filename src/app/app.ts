@@ -1,3 +1,4 @@
+import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, signal, input } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import gsap from 'gsap';
@@ -108,12 +109,32 @@ export class User {
   }
 
 }
+@Component({
+  selector: 'app-pipes',
+  imports: [CurrencyPipe, DatePipe, TitleCasePipe],
+  template: `
+    <main>
+       <!-- Transform the company name to title-case and
+       transform the purchasedOn date to a locale-formatted string -->
+<h1>Purchases from {{ company | titlecase }} on {{ purchasedOn | date | titlecase }}</h1>
+	    <!-- Transform the amount to a currency-formatted string -->
+      <p>Total: {{ amount | currency }}</p>
+    </main>
+  `,
+})
+export class ShoppingCartComponent {
+  amount = 123.45;
+  company = 'acme corporation';
+  purchasedOn = '2024-07-08';
+}
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [User, Arrayfn, RouterOutlet]
+  imports: [User, Arrayfn, RouterOutlet,ShoppingCartComponent]
 })
 export class App {
   name = 'Anshuman';
@@ -144,3 +165,4 @@ export class User2 {
   }
   
 }
+
