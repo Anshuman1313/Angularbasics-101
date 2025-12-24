@@ -2,6 +2,7 @@ import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, signal, input } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
 import gsap from 'gsap';
+import { KebabCasePipe } from './pipes/kebab-case.pipe';
 @Component({
   selector: 'app-arrayfn',
   templateUrl: './arrayfn.html',
@@ -111,12 +112,12 @@ export class User {
 }
 @Component({
   selector: 'app-pipes',
-  imports: [CurrencyPipe, DatePipe, TitleCasePipe],
+  imports: [CurrencyPipe, DatePipe, TitleCasePipe,KebabCasePipe],
   template: `
-    <main>
+    <main class="min-h-screen flex justify-center items-center bg-neutral-200">
        <!-- Transform the company name to title-case and
        transform the purchasedOn date to a locale-formatted string -->
-<h1>Purchases from {{ company | titlecase }} on {{ purchasedOn | date | titlecase }}</h1>
+<h1>Purchases from {{ company | kebabCase }} on {{ purchasedOn | date | titlecase }}</h1>
 	    <!-- Transform the amount to a currency-formatted string -->
       <p>Total: {{ amount | currency }}</p>
     </main>
