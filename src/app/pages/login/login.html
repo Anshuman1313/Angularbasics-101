@@ -1,0 +1,65 @@
+<!-- src/app/pages/login/login.component.html -->
+<div class="login-container">
+  <div class="login-card">
+    <h1>Login</h1>
+    <p class="subtitle">Test credentials: test@example.com / password123</p>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      
+      <!-- Email Field -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          id="email"
+          type="email" 
+          formControlName="email" 
+          placeholder="Enter your email"
+          [class.invalid]="emailControl?.invalid && emailControl?.touched">
+        
+        <div class="error-messages" *ngIf="emailControl?.invalid && emailControl?.touched">
+          <small *ngIf="emailControl?.errors?.['required']">Email is required</small>
+          <small *ngIf="emailControl?.errors?.['email']">Please enter a valid email</small>
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          id="password"
+          type="password" 
+          formControlName="password" 
+          placeholder="Enter your password"
+          [class.invalid]="passwordControl?.invalid && passwordControl?.touched">
+        
+        <div class="error-messages" *ngIf="passwordControl?.invalid && passwordControl?.touched">
+          <small *ngIf="passwordControl?.errors?.['required']">Password is required</small>
+          <small *ngIf="passwordControl?.errors?.['minlength']">
+            Password must be at least 6 characters
+          </small>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div class="alert alert-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        class="btn-primary"
+        [disabled]="loginForm.invalid">
+        Login
+      </button>
+
+      <!-- Debug Panel -->
+      <div class="debug-panel">
+        <h3>🔍 Debug Info</h3>
+        <p>Form Valid: {{ loginForm.valid }}</p>
+        <p>Form Touched: {{ loginForm.touched }}</p>
+        <p>Form Value: {{ loginForm.value | json }}</p>
+      </div>
+    </form>
+</div>
+</div>

@@ -131,15 +131,15 @@ export class ShoppingCartComponent {
 
 
 
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
-  imports: [User, Arrayfn, RouterOutlet,ShoppingCartComponent]
-})
-export class App {
-  name = 'Anshuman';
-}
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.html',
+//   styleUrl: './app.css',
+//   imports: [User, Arrayfn, RouterOutlet,ShoppingCartComponent]
+// })
+// export class App {
+//   name = 'Anshuman';
+// }
 
 @Component({
   selector: 'app-user2',
@@ -166,4 +166,13 @@ export class User2 {
   }
   
 }
+
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet],
+  template: '<router-outlet></router-outlet>'
+})
+export class App {}
 
