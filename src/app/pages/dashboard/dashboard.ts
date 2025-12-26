@@ -2,6 +2,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Auth } from '../../services/auth';
+import { catchError, finalize, Observable, of } from 'rxjs';
+import { Data, User } from '../../services/data';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,6 +20,12 @@ import { Auth } from '../../services/auth';
         <p><strong>Status:</strong> Logged In ✅</p>
       </div>
     </div>
+    <div *ngIf="users$ | async as users; else loading">
+      <ul>
+        <li *ngFor="let user of users">{{ user.name }} - {{ user.id }}</li>
+      </ul>
+    </div>
+    <ng-template #loading><p>Loading...</p></ng-template>
   `,
   styles: [`
     .dashboard {
@@ -48,4 +56,17 @@ import { Auth } from '../../services/auth';
 })
 export class DashboardComponent {
   authService = inject(Auth);
+    users$ = of<User[]>([]);
+  loading = true;
+  error: string | null = null;
+
+  constructor(private dataService: Data) {
+    this.users$ = this.dataService.getUsers().pipe(
+      catchError(() => {
+        this.error = 'Failed to load users';
+        return of([]);
+      }),
+      finalize(() => this.loading = false)
+    );
+  }
 }
