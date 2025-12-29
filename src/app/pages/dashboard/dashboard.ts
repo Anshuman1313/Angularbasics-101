@@ -21,6 +21,9 @@ import { Data, User } from '../../services/data';
       </div>
     </div>
     <div *ngIf="users$ | async as users; else loading">
+       
+
+      
       <ul>
         <li *ngFor="let user of users">{{ user.name }} - {{ user.id }}</li>
       </ul>

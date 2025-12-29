@@ -3,6 +3,7 @@ import { Arrayfn, User2 } from './app';
 import { Login } from './pages/login/login';
 import { DashboardComponent } from './pages/dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
+import { Home } from './pages/home/home';
 
 export const routes: Routes = [
   //    {
@@ -15,7 +16,15 @@ export const routes: Routes = [
   { 
     path: 'dashboard', 
     component: DashboardComponent,
-    canActivate: [authGuard]
+    // canActivate: [authGuard]
+  },
+  { 
+    path: 'user', 
+    component: User2,
+  },
+  { 
+    path: 'home', 
+    component: Home,
   },
   { path: '**', redirectTo: '/login' }
 ];
