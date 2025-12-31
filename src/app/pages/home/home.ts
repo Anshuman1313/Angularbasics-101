@@ -1,6 +1,5 @@
-import { Component, computed, effect, signal } from '@angular/core';
-import { subscribe } from 'diagnostics_channel';
-import { from, of } from 'rxjs';
+import { Component, computed, DOCUMENT, effect, Inject, signal } from '@angular/core';
+import { from, fromEvent, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +18,9 @@ export class Home {
   restart() {
     this.counter.set(1)
   }
-  constructor() {
+  
+  
+  constructor(@Inject(DOCUMENT) private document: Document) {
     effect(() => {
       console.log('Count is now:', this.counter());
     });
@@ -46,7 +47,10 @@ export class Home {
     const user2 = from(users)
     const message1 = of(userpromise)
     const message2 = from(userpromise)
-
+    const clickbody$ = fromEvent(this.document,"click")
+    clickbody$.subscribe((event)=>{
+      console.log("event pointer",event)
+    })
     user1.subscribe((data) => {
       console.log(data, "user1 of")
     })
@@ -61,6 +65,34 @@ export class Home {
     })
 
 
+    const numbers$ = new Observable((subscriber) => {
+    subscriber.next(10);
+    subscriber.next(20);
+    subscriber.next(30);
+    subscriber.complete();
+  });
+  
+  numbers$.subscribe({
+    next: (value) => console.log('Received:', value),
+    complete: () => console.log('Done!')
+  });
+  const delayed$ = new Observable((subscriber) => {
+  subscriber.next(1);
+  subscriber.next(2);
+  
+  setTimeout(() => {
+    subscriber.next(3);
+    subscriber.next(4);
+    subscriber.complete();
+  }, 2000);
+});
+
+console.log('Before subscribe');
+delayed$.subscribe({
+  next: (x) => console.log('Value:', x),
+  complete: () => console.log('Complete!')
+});
+console.log('After subscribe');
   }
 
 
