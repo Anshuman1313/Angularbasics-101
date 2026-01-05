@@ -1,13 +1,26 @@
 <div class="h-screen bg-neutral-100 w-full flex justify-center items-center gap-20">
-    <h1 class=" text-base text-center  font-medium">Hi we are doing a bit go through the signal wrapper or utility in angular </h1>
+    <h1 class=" text-base text-center  font-medium">Hi we are doing a bit go through the signal wrapper or utility in
+        angular </h1>
     <div>
 
-        <p class="text-base text-center ">here is the counter we will update the sate using a button the counter :{{counter()}} <br></p>
-        <p>This here is the tripled value that changes itself <br> wheenver the counter changes using computed value : {{triple()}} </p>
+        <p class="text-base text-center ">here is the counter we will update the sate using a button the counter
+            :{{counter()}} <br></p>
+        <p>This here is the tripled value that changes itself <br> wheenver the counter changes using computed value :
+            {{triple()}} </p>
     </div>
     <div class="font-semibold text-white">
 
-        <button (click)="double() " class="bg-blue-400 cursor-pointer active:scale-[0.97] transition-all ease-out px-2 py-1 rounded-full">Double</button>
-        <button (click)="restart() " class="bg-blue-400 cursor-pointer transition-all ease-out active:scale-[0.97] px-2 py-1 rounded-full">Restart</button>
+        <button (click)="double() "
+            class="bg-blue-400 cursor-pointer active:scale-[0.97] transition-all ease-out px-2 py-1 rounded-full">Double</button>
+        <button (click)="restart() "
+            class="bg-blue-400 cursor-pointer transition-all ease-out active:scale-[0.97] px-2 py-1 rounded-full">Restart</button>
     </div>
+</div>
+<div>
+    <input #userInput (input)="currentValue = userInput.value" placeholder="Type here..."
+        style="padding: 8px; font-size: 16px;">
+
+    <p>You typed: {{ currentValue }}</p>
+
+    <button (click)="userInput.focus()">Focus Input</button>
 </div>

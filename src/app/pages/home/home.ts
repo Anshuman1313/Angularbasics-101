@@ -8,6 +8,7 @@ import { from, fromEvent, Observable, of } from 'rxjs';
   styleUrl: './home.css',
 })
 export class Home {
+  currentValue = '';
   counter = signal(1);
   triple = computed(() => this.counter() * 3)
 
@@ -49,6 +50,7 @@ export class Home {
     const message2 = from(userpromise)
     const clickbody$ = fromEvent(this.document,"click")
     clickbody$.subscribe((event)=>{
+      
       console.log("event pointer",event)
     })
     user1.subscribe((data) => {
