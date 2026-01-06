@@ -4,6 +4,7 @@ import { Login } from './pages/login/login';
 import { DashboardComponent } from './pages/dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 import { Home } from './pages/home/home';
+import { Advance } from './pages/advance/advance';
 
 export const routes: Routes = [
   //    {
@@ -25,6 +26,10 @@ export const routes: Routes = [
   { 
     path: 'home', 
     component: Home,
+  },
+  { 
+    path: 'advance', 
+    component: Advance,
   },
   { path: '**', redirectTo: '/login' }
 ];

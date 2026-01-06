@@ -48,6 +48,7 @@ export class Home {
     const user2 = from(users)
     const message1 = of(userpromise)
     const message2 = from(userpromise)
+    const message3 = of(userpromise)
     const clickbody$ = fromEvent(this.document,"click")
     clickbody$.subscribe((event)=>{
       
@@ -62,6 +63,10 @@ export class Home {
     message2.subscribe((data) => {
       console.log(data, "message2 from")
     })
+    message3.subscribe((data) => {
+      console.log(data, "message3 from")
+    })
+    
     user2.subscribe((data) => {
       console.log(data, "user2 from")
     })

@@ -1,0 +1,36 @@
+<div class="w-full h-full   min-h-screen">
+
+    <div class="max-w-4xl mx-auto   flex flex-col gap-20 ">
+
+        <div class="font-sans space-y-2">
+            <h1 class="text-4xl  ">Map Filter</h1>
+            <p class="text-base text-neutral-600 ">Today we are trying to learn about the mapping using observables in angular</p>
+            <button (click)="getuser()" class="cursor-pointer bg-blue-400 active:scale-[0.97] rounded-full px-3 py-0  duration-150 ease-out">call api</button>
+        </div>
+        @if(data != null){
+            <div>
+
+                {{data }}
+            </div>
+        }
+          <!-- @if (data$ | async; as data) {
+    <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      @for (item of data ; track item) {
+        <div class="bg-white p-6 rounded-lg shadow-md border">
+          <h3 class="font-semibold text-lg mb-2">{{ item.name || 'No Name' }}</h3>
+          <p class="text-sm text-gray-600 mb-1">ID: {{ item.id }}</p>
+       
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="flex justify-center items-center h-64">
+      <p class="text-xl text-gray-500">Loading data...</p>
+    </div>
+  } -->
+
+
+        
+    </div>
+    <!-- <div>{{user()}}</div> -->
+</div>
