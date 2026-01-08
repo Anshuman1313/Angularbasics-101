@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard';
 import { authGuard } from './guards/auth-guard';
 import { Home } from './pages/home/home';
 import { Advance } from './pages/advance/advance';
+import { Crud } from './pages/crud/crud';
 
 export const routes: Routes = [
   //    {
@@ -22,6 +23,10 @@ export const routes: Routes = [
   { 
     path: 'user', 
     component: User2,
+  },
+  { 
+    path: 'crud', 
+    component: Crud,
   },
   { 
     path: 'home', 

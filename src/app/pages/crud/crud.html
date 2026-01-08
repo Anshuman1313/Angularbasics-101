@@ -1,0 +1,9 @@
+<p>crud works!</p>
+@for (e of product; track e.id){
+    <div> 
+        <h1>{{e.name}}</h1>
+    </div>
+}
+@empty {
+    <div>no data available</div>
+}
