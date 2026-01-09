@@ -1,9 +1,48 @@
 <p>crud works!</p>
-@for (e of product; track e.id){
-    <div> 
-        <h1>{{e.name}}</h1>
+<div class="flex gap-10">
+
+
+    <div class="rounded-xl bg-neutral-50 shadow-sm w-50 px-2 py-2">
+        <h1 class="font-semibold text-lg">Get request</h1>
+        @for (e of product; track e.id){
+        <div>
+            <h1>{{e.name}}</h1>
+        </div>
+        }
+        @empty {
+        <div>no data available</div>
+        }
+        <button (click)="sendgetall()"
+            class="cursor-pointer my-10 bg-black active:scale-[0.97] rounded-full px-4 py-2 duration-150 ease-out text-white">
+            Click
+        </button>
     </div>
-}
-@empty {
-    <div>no data available</div>
-}
+    <div class="rounded-xl bg-neutral-50 my-20 shadow-sm w-50 flex flex-col px-2 py-2">
+        <h1 class="font-semibold text-lg">Post request</h1>
+
+        <input type="text" placeholder="Product Name" [(ngModel)]="form.name" />
+        <input type="text" placeholder="CPU Model" [(ngModel)]="form.data['CPU model']" />
+        <input type="number" placeholder="Year" [(ngModel)]="form.data.year" />
+
+        <input type="number" placeholder="Price" [(ngModel)]="form.data.price" />
+        <input type="text" placeholder="Hard Disk Size" [(ngModel)]="form.data['Hard disk size']" />
+        <button (click)="sendpost(form)"
+            class="cursor-pointer my-10 bg-black active:scale-[0.97] rounded-full px-4 py-2 duration-150 ease-out text-white">
+            Click
+        </button>
+    </div>
+    <div class="rounded-xl bg-neutral-50 my-20 shadow-sm w-50 flex flex-col px-2 py-2">
+        <h1 class="font-semibold text-lg">trying reactive from</h1>
+        <form [formGroup]="profileForm">
+
+
+            <input type="text" placeholder=" Name" formControlName="name" />
+            <input type="text" placeholder="Fav Player" formControlName="favplayer" />
+            <button type="submit"
+                class="cursor-pointer my-10 bg-black active:scale-[0.97] rounded-full px-4 py-2 duration-150 ease-out text-white">
+                Submit
+            </button>
+        </form>
+        <h1>{{profileForm.value.name}} fav player is {{profileForm.value.favplayer}}</h1>
+    </div>
+</div>
