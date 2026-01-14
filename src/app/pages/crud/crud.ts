@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { CrudService, Phone,PhonePost,PhonePostResponse, } from '../../services/crud';
 import { catchError, of } from 'rxjs';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,11 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 export class Crud {
   private productService = inject(CrudService);
  product : Phone[] = [];
-
+ @ViewChild('toggleBtn') toggle!: ElementRef<HTMLButtonElement>;
+  
+  changeAttrib() {
+    this.toggle.nativeElement.setAttribute('aria-pressed', 'true');
+  }
  ngOnInit() {
   this.productService.getObjects().subscribe(data => {
     this.product = data;

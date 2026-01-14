@@ -1,0 +1,41 @@
+[aria-pressed] {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 0;
+    padding: 0;
+    height: 40px;
+    gap: 0.2rem;
+    cursor: pointer;
+    background: #0000;
+
+
+
+    &[aria-pressed=true] span::after {
+      translate: calc(100cqi - 100%) 0;
+    }
+
+    span {
+      aspect-ratio: 140 / 60;
+      height: 20px;
+      display: inline-block;
+      border-radius: 24px;
+      border: 1px solid currentColor;
+      position: relative;
+      container-type: inline-size;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0%;
+        height: 100%;
+        left: 0;
+        border-radius: 100px;
+        aspect-ratio: 74 / 50;
+        background: linear-gradient(currentColor 0 100%) padding-box;
+        transition: translate 0.26s ease-out;
+        border: 2px solid #0000;
+      }
+    }
+
+  }
