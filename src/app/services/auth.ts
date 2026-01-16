@@ -51,7 +51,7 @@ export class Auth {
     console.log('🚪 User logged out');
     this.currentUserSignal.set(null);
     
-    // ✅ Only use localStorage in browser
+    // ✅ Only use localStorage in browser's
     if (this.isBrowser) {
       localStorage.removeItem('currentUser');
     }
