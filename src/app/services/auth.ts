@@ -43,7 +43,7 @@ export class Auth {
       return { success: true, message: 'Login successful' };
     }
     
-    console.log('❌ Login failed: Invalid credentials');
+    console.log(' Login failed: Invalid credentials');
     return { success: false, message: 'Invalid email or password' };
   }
 
